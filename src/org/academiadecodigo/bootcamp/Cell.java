@@ -26,7 +26,7 @@ public class Cell {
 
     public void init() {
 
-        rectangle = new Rectangle(posCol * cellSize, posRow * cellSize, cellSize, cellSize);
+        rectangle = new Rectangle(posCol * cellSize + PADDING, posRow * cellSize + PADDING, cellSize, cellSize);
         rectangle.draw();
     }
 
@@ -51,17 +51,17 @@ public class Cell {
         return rectangle.isFilled();
     }
 
-    public String blackOrWhite() {
+    public int colorState() {
 
         if(isColored()) {
 
-            return bOrW = "black";
+            return 1;
+
         } else {
 
-            return bOrW = "white";
+            return 0;
         }
     }
-
 
     public int getCellSize() {
 

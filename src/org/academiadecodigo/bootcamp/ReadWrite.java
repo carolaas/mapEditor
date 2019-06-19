@@ -1,32 +1,63 @@
 package org.academiadecodigo.bootcamp;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.*;
+import java.util.Iterator;
 
 /**
  * Created by codecadet on 18/06/2019.
  */
-public class ReadWrite {
+public class ReadWrite  {
 
-    private FileWriter fileWriter;
-    private BufferedWriter bufferedWriter;
-    private String line = "";
-    private Grid grid;
-    private Cell cell;
+    private static final String PATH = "resources/save.txt";
+
+    public void write(String conversion) {
+
+    FileWriter fileWriter;
+    BufferedWriter bufferedWriter;
+
+        try {
+            fileWriter = new FileWriter(PATH);
+            bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(conversion);
+            bufferedWriter.flush();
+            bufferedWriter.close();
 
 
-    public ReadWrite(FileWriter fileWriter) {
-        this.fileWriter = fileWriter;
-    }
 
-    public void Read(Grid grid) {
+        } catch (IOException e ) {
 
-        for (int i = 0; i < grid.getArray().length ; i++) {
-
-            if(cell.blackOrWhite() == "black") {
-
-                line += "black";
-            }
+            System.out.println("IO exception");
         }
+
     }
+
+    public  String read() {
+
+        FileReader fileReader;
+        BufferedReader bufferedReader;
+        String result = "";
+
+
+        try {
+            fileReader = new FileReader(PATH);
+            bufferedReader = new BufferedReader(fileReader);
+            String line = "";
+
+            while((line = bufferedReader.readLine()) !=  null ) {
+
+                result += line;
+                System.out.println(result);
+                bufferedReader.read();
+                bufferedReader.close();
+            }
+
+        } catch (IOException e) {
+
+            System.out.println("IO exception");
+        }
+
+
+            return result;
+    }
+
 }

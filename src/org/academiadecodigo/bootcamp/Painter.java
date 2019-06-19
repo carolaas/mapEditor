@@ -13,15 +13,20 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  */
 public class Painter implements KeyboardHandler {
 
+    public static final int PADDING = 10;
     private Rectangle rectangle;
     private Grid grid;
+    private int painterSize = 20;
+    private ReadWrite state;
 
     public Painter(Grid grid) {
 
-        rectangle = new Rectangle(1, 1, 20 , 20);
+
+        rectangle = new Rectangle(PADDING, PADDING, 20 , 20);
         rectangle.setColor(Color.BLACK);
         rectangle.fill();
         this.grid = grid;
+        state = new ReadWrite();
 
     }
 
@@ -53,6 +58,18 @@ public class Painter implements KeyboardHandler {
         eventPaint.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         painter.addEventListener(eventPaint);
 
+        KeyboardEvent eventS = new KeyboardEvent();
+        eventS.setKey(KeyboardEvent.KEY_S);
+        eventS.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        painter.addEventListener(eventS);
+
+        KeyboardEvent eventZ = new KeyboardEvent();
+        eventZ.setKey(KeyboardEvent.KEY_Z);
+        eventZ.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        painter.addEventListener(eventZ);
+
+
+
     }
 
 
@@ -63,34 +80,41 @@ public class Painter implements KeyboardHandler {
 
             System.out.println(rectangle.getX());
             System.out.println(grid.getCols());
-            rectangle.translate(20, 0);
+            rectangle.translate(painterSize, 0);
 
 
-        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT && rectangle.getX() > 20 ) {
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT && rectangle.getX() > painterSize) {
 
-            rectangle.translate(-20, 0);
+            rectangle.translate(-painterSize, 0);
 
 
-        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP && rectangle.getY() > 20) {
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_UP && rectangle.getY() > painterSize) {
 
-            rectangle.translate(0, -20);
+            rectangle.translate(0, -painterSize);
 
-        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN && rectangle.getY() < (grid.getRows() -1) * 20) {
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN && rectangle.getY() < (grid.getRows() - 1) * painterSize) {
 
-            rectangle.translate(0, 20);
+            rectangle.translate(0, painterSize);
 
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
 
-            Cell cell = grid.getCell(rectangle.getX() / 20, rectangle.getY() / 20);
+            Cell cell = grid.getCell(rectangle.getX() / painterSize, rectangle.getY() / painterSize);
 
-           if (cell.isColored()) {
+            if (cell.isColored()) {
 
-               cell.uncolor();
+                cell.uncolor();
 
-           } else {
+            } else {
 
-               cell.color();
-           }
+                cell.color();
+            }
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+
+            state.write(grid.arrayToStr());
+
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_Z) {
+
+            grid.stringToArray(state.read());
         }
     }
 
