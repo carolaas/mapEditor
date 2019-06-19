@@ -68,6 +68,12 @@ public class Painter implements KeyboardHandler {
         eventZ.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         painter.addEventListener(eventZ);
 
+        KeyboardEvent eventDel = new KeyboardEvent();
+        eventDel.setKey(KeyboardEvent.KEY_D);
+        eventDel.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        painter.addEventListener(eventDel);
+
+
 
 
     }
@@ -115,6 +121,10 @@ public class Painter implements KeyboardHandler {
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_Z) {
 
             grid.stringToArray(state.read());
+
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
+
+            grid.delete();
         }
     }
 

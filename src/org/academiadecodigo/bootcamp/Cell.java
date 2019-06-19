@@ -79,4 +79,5 @@ public class Cell {
 
         rectangle.draw();
     }
+
 }

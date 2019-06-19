@@ -34,6 +34,17 @@ public class Grid {
         }
     }
 
+    public void delete() {
+
+        for (int col = 0; col < cols; col++) {
+            for (int row = 0; row < rows; row++) {
+
+                cellArray[col][row].uncolor();
+            }
+
+        }
+    }
+
     public String arrayToStr() {
 
         arrayStr = "";
