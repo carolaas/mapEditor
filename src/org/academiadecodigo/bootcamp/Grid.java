@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
+
 /**
  * Created by codecadet on 18/06/2019.
  */
@@ -11,7 +13,6 @@ public class Grid {
     private Cell[][] cellArray;
     private Painter painter;
     private String arrayStr = "";
-    private ReadWrite readWrite;
 
 
     public Grid(int cols, int rows) {
@@ -68,14 +69,20 @@ public class Grid {
 
                 Cell cell = cellArray[col][row];
 
-                if(arrayStr.charAt(index) == '0') {
+                if (arrayStr.charAt(index) == '0') {
 
                     cell.uncolor();
 
-                } else {
+                } else if (arrayStr.charAt(index) == '1') {
 
-                    cell.color();
+                    cell.color(Color.BLACK);
+
+
+            }    else {
+
+                    cell.color(Color.MAGENTA);
                 }
+
                 index++;
             }
             index++;

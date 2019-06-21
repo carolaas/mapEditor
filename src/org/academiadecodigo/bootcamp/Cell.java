@@ -53,13 +53,19 @@ public class Cell {
 
     public int colorState() {
 
-        if(isColored()) {
+        if(!isColored()) {
 
-            return 1;
+            return 0;
 
         } else {
 
-            return 0;
+            if (rectangle.getColor() == Color.MAGENTA) {
+                return 2;
+
+            } else {
+
+                return 1;
+            }
         }
     }
 
@@ -69,15 +75,15 @@ public class Cell {
     }
 
 
-    public void color() {
+    public void color(Color color) {
 
-        rectangle.setColor(Color.BLACK);
+        rectangle.setColor(color);
         rectangle.fill();
     }
 
     public void uncolor() {
 
+        rectangle.setColor(Color.BLACK);
         rectangle.draw();
     }
-
 }

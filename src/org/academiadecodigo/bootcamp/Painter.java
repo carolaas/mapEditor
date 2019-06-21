@@ -23,7 +23,7 @@ public class Painter implements KeyboardHandler {
 
 
         rectangle = new Rectangle(PADDING, PADDING, 20 , 20);
-        rectangle.setColor(Color.BLACK);
+        rectangle.setColor(Color.MAGENTA);
         rectangle.fill();
         this.grid = grid;
         state = new ReadWrite();
@@ -73,7 +73,10 @@ public class Painter implements KeyboardHandler {
         eventDel.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         painter.addEventListener(eventDel);
 
-
+        KeyboardEvent eventM = new KeyboardEvent();
+        eventM.setKey(KeyboardEvent.KEY_M);
+        eventM.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        painter.addEventListener(eventM);
 
 
     }
@@ -84,8 +87,6 @@ public class Painter implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT && rectangle.getX() < (grid.getCols() - 1) * 20) {
 
-            System.out.println(rectangle.getX());
-            System.out.println(grid.getCols());
             rectangle.translate(painterSize, 0);
 
 
@@ -112,7 +113,7 @@ public class Painter implements KeyboardHandler {
 
             } else {
 
-                cell.color();
+                cell.color(Color.BLACK);
             }
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
 
@@ -125,7 +126,14 @@ public class Painter implements KeyboardHandler {
         } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
 
             grid.delete();
-        }
+
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_M) {
+
+            Cell cell = grid.getCell(rectangle.getX() / painterSize, rectangle.getY() / painterSize);
+            cell.color(Color.MAGENTA);
+
+    }
+
     }
 
     @Override

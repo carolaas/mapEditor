@@ -24,7 +24,7 @@ public class ReadWrite  {
 
 
 
-        } catch (IOException e ) {
+        } catch (IOException e) {
 
             System.out.println("IO exception");
         }
@@ -46,18 +46,16 @@ public class ReadWrite  {
             while((line = bufferedReader.readLine()) !=  null ) {
 
                 result += line;
-                System.out.println(result);
                 bufferedReader.read();
-                bufferedReader.close();
             }
+                bufferedReader.close();
 
         } catch (IOException e) {
 
             System.out.println("IO exception");
         }
 
-
-            return result;
+        return result;
     }
 
 }
