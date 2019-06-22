@@ -11,7 +11,6 @@ public class Grid {
     private int rows;
     private int cols;
     private Cell[][] cellArray;
-    private Painter painter;
     private String arrayStr = "";
 
 
@@ -20,8 +19,6 @@ public class Grid {
         this.cols = cols;
         this.rows = rows;
         cellArray = new Cell[cols][rows];
-        painter = new Painter(this);
-        painter.defKeys();
     }
 
     public void init() {

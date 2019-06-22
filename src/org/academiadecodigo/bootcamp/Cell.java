@@ -60,6 +60,7 @@ public class Cell {
         } else {
 
             if (rectangle.getColor() == Color.MAGENTA) {
+
                 return 2;
 
             } else {
