@@ -36,7 +36,7 @@ public class MapEditor {
 
     public void init() {
 
-        grid.init();
+
         keyboardManager.defKeys();
     }
 }

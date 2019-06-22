@@ -45,8 +45,8 @@ public class ReadWrite  {
 
             while((line = bufferedReader.readLine()) !=  null ) {
 
-                result += line;
-                bufferedReader.read();
+                result += line + "\n";
+                //bufferedReader.read();
             }
                 bufferedReader.close();
 

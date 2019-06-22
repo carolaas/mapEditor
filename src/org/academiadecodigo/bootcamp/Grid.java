@@ -7,7 +7,6 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
  */
 public class Grid {
 
-    public static final int PADDING = 10;
     private int rows;
     private int cols;
     private Cell[][] cellArray;
@@ -19,6 +18,7 @@ public class Grid {
         this.cols = cols;
         this.rows = rows;
         cellArray = new Cell[cols][rows];
+        init();
     }
 
     public void init() {
@@ -46,7 +46,7 @@ public class Grid {
     public String arrayToStr() {
 
         arrayStr = "";
-        for (int col = 0; col < cols; col++) {
+        for (int col = 0; col < cols ; col++) {
             for (int row = 0; row < rows; row++) {
                 arrayStr += cellArray[col][row].colorState();
             }
@@ -64,20 +64,20 @@ public class Grid {
         for (int col = 0; col < cols; col++) {
             for (int row = 0; row < rows; row++) {
 
-                Cell cell = cellArray[col][row];
+                //Cell cell = cellArray[col][row];
 
-                if (arrayStr.charAt(index) == '0') {
+                if (result.charAt(index) == '0') {
 
-                    cell.uncolor();
+                    cellArray[col][row].uncolor();
 
-                } else if (arrayStr.charAt(index) == '1') {
+                } else if (result.charAt(index) == '1') {
 
-                    cell.color(Color.BLACK);
+                    cellArray[col][row].color(Color.BLACK);
 
 
             }    else {
 
-                    cell.color(Color.MAGENTA);
+                    cellArray[col][row].color(Color.MAGENTA);
                 }
 
                 index++;

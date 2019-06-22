@@ -18,9 +18,7 @@ public class Painter {
     private Grid grid;
     private int painterSize = 20;
 
-
     public Painter(Grid grid) {
-
 
         rectangle = new Rectangle(PADDING, PADDING, 20 , 20);
         rectangle.setColor(Color.MAGENTA);

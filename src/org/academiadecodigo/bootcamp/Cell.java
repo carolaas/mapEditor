@@ -14,7 +14,6 @@ public class Cell {
     private int posCol;
     private int cellSize = 20;
     private Rectangle rectangle;
-    private String bOrW;
 
 
     public Cell(int posCol, int posRow) {
